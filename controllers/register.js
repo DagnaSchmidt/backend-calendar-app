@@ -1,7 +1,7 @@
 import express from 'express';
 import bcryptjs from 'bcryptjs';
 import { body, validationResult } from 'express-validator';
-import User from '../models/user.js';
+import User from '../models/users.js';
 export const registerRouter = express.Router();
 
 registerRouter.post(

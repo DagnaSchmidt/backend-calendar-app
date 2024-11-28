@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken";
 import bcryptjs from 'bcryptjs';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import User from '../models/user.js';
+import { body, validationResult } from 'express-validator';
+import User from '../models/users.js';
 export const loginRouter = express.Router();
 
 const loginLimiter = rateLimit({
@@ -39,7 +40,7 @@ loginRouter.post(
             const userForToken = { username: user.username, id: user._id };
             const token = jwt.sign(userForToken, SECRET, { expiresIn: '1h' });
 
-            response.status(200).send({ token, username: user.username });
+            response.status(200).send({ token, username: user.username, id: user.id });
         } catch (error) {
             response.status(500).json({ error: 'Something went wrong' });
         }
@@ -71,7 +72,7 @@ loginRouter.post(
             const userForToken = { username: user.username, id: user._id };
             const token = jwt.sign(userForToken, SECRET, { expiresIn: '1h' });
 
-            response.status(200).send({ token, username: user.username });
+            response.status(200).send({ token, username: user.username, id: user.id });
         } catch (error) {
             response.status(500).json({ error: 'Something went wrong' });
         }

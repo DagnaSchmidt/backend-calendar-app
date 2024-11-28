@@ -8,7 +8,7 @@
     "test": "jest",
     "start": "node index",
     "dev": "nodemon index",
-    "seed": "node seed.js"
+    "seed": "node seedAdmin.js"
   },
   "author": "",
   "license": "ISC",

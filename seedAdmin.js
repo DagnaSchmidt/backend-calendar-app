@@ -1,15 +1,12 @@
 import mongoose from 'mongoose';
 import bcryptjs from 'bcryptjs';
-import User from './models/user.js';
+import User from './models/users.js';
 import { SEED_ADMIN_EMAIL, SEED_ADMIN_PASSWORD, SEED_ADMIN_USERNAME } from './utils/config.js';
 
 const seedAdmin = async () => {
 
     try {
-        await mongoose.connect("mongodb://localhost:20717/calendar-db", {
-            useNewUrlParser: true,
-            useUnifiedToplogy: true
-        });
+        await mongoose.connect("mongodb://localhost:27017/calendar-db");
 
         console.log('Connected to MongoDB');
 
